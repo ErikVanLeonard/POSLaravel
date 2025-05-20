@@ -122,7 +122,7 @@
         } else {
             console.log('jQuery versión:', jQuery.fn.jquery);
         }
-        
+
         // Verificar si DataTables está cargado
         if (typeof $.fn.DataTable === 'undefined') {
             console.error('DataTables no está cargado');
@@ -131,13 +131,13 @@
 
         $(document).ready(function() {
         console.log('Inicializando DataTable...');
-        
+
         // Verificar si la tabla existe
         if ($.fn.DataTable.isDataTable('#products-table')) {
             $('#products-table').DataTable().destroy();
             console.log('DataTable anterior destruido');
         }
-        
+
         // Inicializar DataTable con configuración mínima
         var table = $('#products-table').DataTable({
             responsive: true,
@@ -189,7 +189,7 @@
                 { width: '15%', targets: 8 }  // Acciones
             ]
         });
-        
+
         console.log('DataTable inicializado correctamente');
         });
     })(); // Fin de la función auto-ejecutable

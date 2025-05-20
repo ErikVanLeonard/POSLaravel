@@ -1,0 +1,107 @@
+# Archivos de entorno
+.env
+.env.backup
+.env.production
+.env.local
+.env.*.local
+
+# Dependencias
+/vendor/
+/node_modules/
+
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5 & Lumen specific
+public/storage
+public/hot
+
+# Archivos de almacenamiento
+/storage/*.key
+/storage/pail
+/storage/debugbar/
+/storage/framework/cache/
+/storage/framework/sessions/
+/storage/framework/views/
+/storage/logs/
+
+# Paquetes
+*.box
+
+# Archivos de desarrollo local
+Homestead.yaml
+Homestead.json
+Vagrantfile
+
+# Archivos de IDE
+.idea
+.vscode
+.zed
+.nova
+.fleet
+.phpunit.cache
+.phpunit.result.cache
+.phpunit.cache/
+
+# Archivos de logs
+*.log
+npm-debug.log
+yarn-error.log
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de entorno local
+.phpunit.result.cache
+.phpunit.cache
+
+# Archivos de composer
+composer.lock
+composer.phar
+
+# Archivos de npm
+yarn.lock
+package-lock.json
+
+# Archivos de testing
+.phpunit.cache/
+.phpunit.result.cache
+
+# Archivos de IDE
+.idea
+.vscode
+.zed
+.nova
+.fleet
+
+# Archivos de entorno local
+.env.local
+.env.*.local
+
+# Archivos de caché
+bootstrap/cache/*
+
+# Archivos de compilación
+/public/build
+/public/hot
+/public/storage
+
+# Archivos de autenticación
+/auth.json
+
+# Archivos de configuración local
+*.local.php
+
+# Archivos de sesión
+/storage/framework/sessions/*
+!storage/framework/sessions/.gitignore
+
+# Archivos de caché de vistas
+/storage/framework/views/*
+!storage/framework/views/.gitignore
+
+# Archivos de caché de configuración
+bootstrap/cache/*
+!bootstrap/cache/.gitignore

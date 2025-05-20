@@ -1,0 +1,44 @@
+/* Importación de Bulma */
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
+/* Estilos personalizados */
+body {
+    background-color: #fff;
+}
+
+/* Estilos para el modo oscuro */
+.is-dark {
+    background-color: #363636;
+    color: #fff;
+}
+
+/* Estilos personalizados para el sidebar */
+.sidebar {
+    background-color: #f5f5f5;
+}
+
+.sidebar.is-dark {
+    background-color: #292929;
+}
+
+/* Estilos personalizados para las tablas */
+.table {
+    background-color: #fff;
+}
+
+.table.is-dark {
+    background-color: #292929;
+    color: #fff;
+}
+
+/* Estilos personalizados para los inputs */
+.input {
+    background-color: #fff;
+    border-color: #dbdbdb;
+}
+
+.input.is-dark {
+    background-color: #363636;
+    border-color: #4a4a4a;
+    color: #fff;
+}

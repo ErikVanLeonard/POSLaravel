@@ -17,5 +17,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Rutas protegidas
 Route::middleware(['auth'])->group(function () {
     Route::resource('products', ProductController::class);
-Route::resource('categories', CategoryController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('clients', \App\Http\Controllers\ClientController::class);
 });

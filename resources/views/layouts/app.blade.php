@@ -111,6 +111,12 @@
                     </span>
                     <span>Categorías</span>
                 </a></li>
+                <li><a href="{{ route('clients.index') }}" class="{{ request()->routeIs('clients.*') ? 'is-active' : '' }}">
+                    <span class="icon">
+                        <i class="fas fa-users"></i>
+                    </span>
+                    <span>Clientes</span>
+                </a></li>
             </ul>
 
             <p class="menu-label has-text-grey-lighter mt-6">

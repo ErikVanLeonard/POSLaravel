@@ -100,7 +100,16 @@
             </p>
             <ul class="menu-list">
                 <li><a href="{{ route('products.index') }}" class="{{ request()->routeIs('products.*') ? 'is-active' : '' }}">
-                    Productos
+                    <span class="icon">
+                        <i class="fas fa-boxes"></i>
+                    </span>
+                    <span>Productos</span>
+                </a></li>
+                <li><a href="{{ route('categories.index') }}" class="{{ request()->routeIs('categories.*') ? 'is-active' : '' }}">
+                    <span class="icon">
+                        <i class="fas fa-tags"></i>
+                    </span>
+                    <span>Categorías</span>
                 </a></li>
             </ul>
 

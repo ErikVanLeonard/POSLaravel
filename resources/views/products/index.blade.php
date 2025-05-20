@@ -37,7 +37,6 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Imagen</th>
                                     <th>Nombre</th>
                                     <th>Cód. Barras</th>
                                     <th>Precio Menudeo</th>
@@ -51,15 +50,6 @@
                                 @foreach ($products as $product)
                                     <tr>
                                         <td>{{ $product->id }}</td>
-                                        <td>
-                                            @if($product->image_path)
-                                                <figure class="image is-48x48">
-                                                    <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->nombre }}">
-                                                </figure>
-                                            @else
-                                                <span class="has-text-grey-light">Sin imagen</span>
-                                            @endif
-                                        </td>
                                         <td>{{ $product->nombre }}</td>
                                         <td>{{ $product->barcode }}</td>
                                         <td>${{ number_format($product->precio_menudeo, 2) }}</td>
@@ -106,11 +96,15 @@
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bulma.min.js"></script>
 
-<!-- PDF Export Dependencies -->
+<!-- Export Dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+<!-- Excel export -->
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
 
 <script>
     // Función auto-ejecutable para evitar contaminación del ámbito global
@@ -168,25 +162,51 @@
             dom: 'Bfrtip',
             buttons: [
                 {
+                    extend: 'excel',
+                    text: '<i class="fas fa-file-excel"></i> Excel',
+                    className: 'button is-success is-small',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6] // Columnas a exportar (0-based index)
+                    },
+                    title: 'Productos',
+                    extension: '.xlsx'
+                },
+                {
                     extend: 'pdf',
-                    text: 'Exportar a PDF',
+                    text: '<i class="fas fa-file-pdf"></i> PDF',
+                    className: 'button is-danger is-small',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6] // Columnas a exportar (0-based index)
+                    },
+                    title: 'Productos'
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fas fa-print"></i> Imprimir',
                     className: 'button is-info is-small',
                     exportOptions: {
-                        columns: [0, 2, 3, 4, 5, 6, 7] // Columnas a exportar (0-based index)
-                    }
+                        columns: [0, 1, 2, 3, 4, 5, 6] // Columnas a exportar (0-based index)
+                    },
+                    title: 'Listado de Productos'
                 }
             ],
+            language: {
+                buttons: {
+                    excel: 'Exportar a Excel',
+                    pdf: 'Exportar a PDF',
+                    print: 'Imprimir'
+                }
+            },
             columnDefs: [
-                { orderable: false, targets: [1, 8] }, // Deshabilitar ordenación para columnas de imagen y acciones
+                { orderable: false, targets: [6] }, // Deshabilitar ordenación para columna de acciones
                 { width: '5%', targets: 0 },  // ID
-                { width: '10%', targets: 1 }, // Imagen
-                { width: '15%', targets: 2 }, // Nombre
-                { width: '10%', targets: 3 }, // Código de barras
-                { width: '10%', targets: 4 }, // Precio menudeo
-                { width: '10%', targets: 5 }, // Precio mayoreo
-                { width: '5%', targets: 6 },  // Stock
-                { width: '15%', targets: 7 }, // Categoría
-                { width: '15%', targets: 8 }  // Acciones
+                { width: '20%', targets: 1 }, // Nombre
+                { width: '10%', targets: 2 }, // Código de barras
+                { width: '10%', targets: 3 }, // Precio menudeo
+                { width: '10%', targets: 4 }, // Precio mayoreo
+                { width: '5%', targets: 5 },  // Stock
+                { width: '15%', targets: 6 }, // Categoría
+                { width: '15%', targets: 7 }  // Acciones
             ]
         });
 

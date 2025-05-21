@@ -19,4 +19,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('clients', \App\Http\Controllers\ClientController::class);
+    
+    // Rutas para proveedores
+    Route::resource('providers', \App\Http\Controllers\ProviderController::class);
+    Route::post('providers/{provider}/restore', [\App\Http\Controllers\ProviderController::class, 'restore'])->name('providers.restore');
+    Route::delete('providers/{provider}/force-delete', [\App\Http\Controllers\ProviderController::class, 'forceDelete'])->name('providers.force-delete');
+    Route::delete('providers/document/{document}', [\App\Http\Controllers\ProviderController::class, 'deleteDocument'])->name('providers.document.delete');
+    Route::get('providers/document/{document}/download', [\App\Http\Controllers\ProviderController::class, 'downloadDocument'])->name('providers.document.download');
 });

@@ -117,6 +117,12 @@
                     </span>
                     <span>Clientes</span>
                 </a></li>
+                <li><a href="{{ route('providers.index') }}" class="{{ request()->routeIs('providers.*') ? 'is-active' : '' }}">
+                    <span class="icon">
+                        <i class="fas fa-truck"></i>
+                    </span>
+                    <span>Proveedores</span>
+                </a></li>
             </ul>
 
             <p class="menu-label has-text-grey-lighter mt-6">

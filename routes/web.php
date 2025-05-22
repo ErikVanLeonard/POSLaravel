@@ -16,6 +16,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Rutas protegidas
 Route::middleware(['auth'])->group(function () {
+    // Rutas principales
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('clients', \App\Http\Controllers\ClientController::class);
@@ -26,4 +27,10 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('providers/{provider}/force-delete', [\App\Http\Controllers\ProviderController::class, 'forceDelete'])->name('providers.force-delete');
     Route::delete('providers/document/{document}', [\App\Http\Controllers\ProviderController::class, 'deleteDocument'])->name('providers.document.delete');
     Route::get('providers/document/{document}/download', [\App\Http\Controllers\ProviderController::class, 'downloadDocument'])->name('providers.document.download');
+    
+    // Rutas de auditoría
+    Route::prefix('audit-logs')->name('audit-logs.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\AuditLogController::class, 'index'])->name('index');
+        Route::get('/{auditLog}', [\App\Http\Controllers\AuditLogController::class, 'show'])->name('show');
+    });
 });

@@ -198,15 +198,7 @@
                 }
             },
             columnDefs: [
-                { orderable: false, targets: [6] }, // Deshabilitar ordenación para columna de acciones
-                { width: '5%', targets: 0 },  // ID
-                { width: '20%', targets: 1 }, // Nombre
-                { width: '10%', targets: 2 }, // Código de barras
-                { width: '10%', targets: 3 }, // Precio menudeo
-                { width: '10%', targets: 4 }, // Precio mayoreo
-                { width: '5%', targets: 5 },  // Stock
-                { width: '15%', targets: 6 }, // Categoría
-                { width: '15%', targets: 7 }  // Acciones
+                { orderable: false, targets: [6] } // Deshabilitar ordenación para columna de acciones
             ]
         });
 

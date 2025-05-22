@@ -123,6 +123,12 @@
                     </span>
                     <span>Proveedores</span>
                 </a></li>
+                <li><a href="{{ route('audit-logs.index') }}" class="{{ request()->routeIs('audit-logs.*') ? 'is-active' : '' }}">
+                    <span class="icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </span>
+                    <span>Auditoría</span>
+                </a></li>
             </ul>
 
             <p class="menu-label has-text-grey-lighter mt-6">

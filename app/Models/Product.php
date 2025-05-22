@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use Auditable;
+    
     protected $fillable = [
         'nombre',
-        // 'precio', // Se reemplazará o complementará con precio_menudeo y precio_mayoreo
-        // 'cantidad', // Se reemplazará o complementará con stock_actual
         'barcode',
         'precio_menudeo',
         'precio_mayoreo',

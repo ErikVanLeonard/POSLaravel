@@ -1,61 +1,91 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Project Inventory Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A web application for managing inventory, including products, categories, clients, and providers with their associated documents. Built with the Laravel framework.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+*   **User Authentication:** Secure login and logout functionality.
+*   **Product Management:** CRUD operations for products. Products have a name, barcode, retail price, wholesale price, current stock, category, and an optional image.
+*   **Category Management:** CRUD operations for product categories.
+*   **Client Management:** CRUD operations for clients. Clients have a name, company, RFC, address, phone, and email. Supports soft deletes.
+*   **Provider Management:** CRUD operations for providers. Providers have company details, contact information, and can have multiple documents uploaded. Supports soft deletes, force deletes, and restoration.
+*   **Provider Document Management:** Upload, download, and delete documents associated with providers (e.g., contracts, catalogs).
+*   **Database Migrations and Seeding:** For easy setup and initial data population.
+*   **Testing Suite:** Includes unit tests for models and feature tests for controllers.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Technologies Used
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+*   [Laravel](https://laravel.com/)
+*   PHP
+*   MySQL (or other compatible database)
+*   Tailwind CSS (via Laravel Breeze/Jetstream default or custom setup)
+*   Blade Templating Engine
+*   PHPUnit for testing
 
-## Learning Laravel
+## Setup and Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd <repository-name>
+    ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2.  **Install PHP dependencies:**
+    ```bash
+    composer install
+    ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3.  **Create environment file:**
+    Copy `.env.example` to `.env` and configure your database connection and other environment variables.
+    ```bash
+    cp .env.example .env
+    ```
 
-## Laravel Sponsors
+4.  **Generate application key:**
+    ```bash
+    php artisan key:generate
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5.  **Run database migrations:**
+    ```bash
+    php artisan migrate
+    ```
 
-### Premium Partners
+6.  **(Optional) Seed the database:**
+    If seeders are available (e.g., for an admin user or default categories):
+    ```bash
+    php artisan db:seed
+    ```
+    *(Note: The `AdminUserSeeder`, `CategorySeeder`, `DatabaseSeeder`, `ProviderSeeder` were observed in the project structure)*
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+7.  **Link storage directory:**
+    To make uploaded files (like product images and provider documents) publicly accessible:
+    ```bash
+    php artisan storage:link
+    ```
 
-## Contributing
+8.  **Install NPM dependencies (if needed for frontend assets):**
+    ```bash
+    npm install
+    npm run dev # or npm run build
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+9.  **Serve the application:**
+    ```bash
+    php artisan serve
+    ```
+    The application should now be accessible at `http://localhost:8000` (or the port shown).
 
-## Code of Conduct
+## Running Tests
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+To run the PHPUnit test suite:
 
-## Security Vulnerabilities
+```bash
+php artisan test
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Or, for more verbose output:
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+./vendor/bin/phpunit
+```
